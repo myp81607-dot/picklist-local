@@ -2,7 +2,7 @@
 
 A small browser tool for making an internal, shelf-sorted picking worksheet from a Shopify order export and a `SKU,Location` CSV. Free beta, built by Alex Ma with AI-assisted development. Independent of Shopify.
 
-Open `index.html`, choose the two UTF-8 CSV files, and build a list. The sample button works without any files. Print the result or download a pick CSV. There is no server, upload, analytics, account or saved customer data.
+[Download the beta ZIP](https://github.com/myp81607-dot/picklist-local/releases/tag/v0.1.0-beta), extract it, and open `index.html`. Start with **Try sample files** to see the output without using store data. Then choose your two UTF-8 CSV files and build a list. Print the result or download a pick CSV. There is no server, upload, analytics, account or saved customer data.
 
 ## Supported job
 
