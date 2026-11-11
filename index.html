@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Make an internal, shelf-sorted pick list from Shopify order exports and your SKU location CSV. Files stay in your browser.">
+  <title>Picklist Local — from order CSV to warehouse shelf</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="picklist.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Picklist Local home"><span class="brand-icon" aria-hidden="true">▤</span> Picklist Local <span class="beta">BETA</span></a>
+      <a href="https://github.com/myp81607-dot/picklist-local">Source &amp; instructions ↗</a>
+    </header>
+    <main>
+      <section class="intro no-print">
+        <p class="eyebrow">FOR SMALL WAREHOUSES · SHOPIFY CSV EXPORTS</p>
+        <h1>Orders in.<br><span>Shelves in order.</span></h1>
+        <p class="lede">Combine your order export with a SKU location sheet. Get an internal pick list sorted by shelf, with missing details held for review.</p>
+        <div class="benefits"><span>✓ No store connection</span><span>✓ Files stay in your browser</span><span>✓ Free to use</span></div>
+      </section>
+
+      <section class="workspace no-print" aria-labelledby="upload-title">
+        <div class="section-heading"><div><span class="step">01 / PREPARE</span><h2 id="upload-title">Two files. One picking run.</h2></div><button id="example" type="button" class="secondary">Try sample files</button></div>
+        <p class="scope-note">For one warehouse and fully paid, unfulfilled orders. Canceled, refunded, partially fulfilled and non-shipping orders are excluded. Review your export before picking; this tool cannot check live inventory or order changes.</p>
+        <div class="upload-grid">
+          <label class="upload-box" for="orders-file"><span class="file-number">1</span><strong>Shopify order export</strong><span>Export orders as CSV from your store admin.</span><input id="orders-file" type="file" accept=".csv,text/csv"><span id="orders-name" class="file-status">No file selected</span><a href="samples/orders.csv" download onclick="event.stopPropagation()">Download sample orders ↓</a></label>
+          <label class="upload-box" for="locations-file"><span class="file-number">2</span><strong>Your SKU location sheet</strong><span>Two columns: <code>SKU</code> and <code>Location</code>. One location per SKU.</span><input id="locations-file" type="file" accept=".csv,text/csv"><span id="locations-name" class="file-status">No file selected</span><a href="samples/locations.csv" download onclick="event.stopPropagation()">Download location template ↓</a></label>
+        </div>
+        <div class="build-row"><button id="build" type="button" class="primary" disabled>Build pick list <span aria-hidden="true">→</span></button><p>UTF-8 CSV · exact SKU matching · nothing saved after closing</p></div>
+        <p id="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="results" hidden aria-labelledby="results-title">
+        <div class="section-heading"><div><span class="step no-print">02 / REVIEW &amp; PICK</span><h2 id="results-title">Your picking run</h2><p id="run-source" class="muted"></p></div><div class="result-actions no-print"><button id="export" type="button" class="secondary">Download pick CSV</button><button id="print" type="button" class="primary">Print pick list</button></div></div>
+        <div id="stats" class="stats" aria-label="Run summary"></div>
+        <p class="print-note">Internal picking worksheet. Check the held and excluded orders below. This is a snapshot of your CSV, not a live fulfillment instruction.</p>
+        <div class="table-scroll"><table><thead><tr><th scope="col">Picked</th><th scope="col">Shelf / bin</th><th scope="col">SKU</th><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Order</th></tr></thead><tbody id="pick-rows"></tbody></table></div>
+        <p id="empty" hidden>No orders are ready to pick. Review the details below.</p>
+        <div id="review-panel" class="review-panel" hidden><h3>Held for review</h3><p>Every item in an affected order is held. Fix the source files and rebuild before picking it.</p><ul id="review-list"></ul></div>
+        <details id="excluded-panel" class="excluded-panel" hidden><summary id="excluded-summary"></summary><ul id="excluded-list"></ul></details>
+      </section>
+
+      <section class="help-row no-print">
+        <div><h3>Need a different CSV layout?</h3><p>Paid adaptation is available by agreed scope. Share column names and a small fictional example to discuss your format.</p><a class="text-link" href="https://github.com/myp81607-dot/picklist-local/issues/new?title=Custom%20CSV%20format%20inquiry&amp;body=Please%20use%20fictional%20data%20only.%20GitHub%20issues%20are%20public.%0A%0ACSV%20source%3A%0AColumn%20names%3A%0AExpected%20output%3A%0AWould%20a%20paid%20adaptation%20be%20useful%3F%0A">Discuss a custom format ↗</a><small>Opens a public GitHub issue. Do not include customer data or credentials.</small></div>
+        <div><h3>Prefer a store-connected app?</h3><p>This is a manual CSV tool. Shopify's packing slip templates or an order-printing app may suit you better if you need automatic updates, multiple warehouses or partial fulfillment.</p><a class="text-link" href="https://help.shopify.com/en/manual/fulfillment/managing-orders/printing-orders/packing-slips">Shopify packing slip guide ↗</a></div>
+      </section>
+    </main>
+    <footer class="no-print"><span>Built by Alex Ma with AI-assisted development. Independent tool; not affiliated with Shopify.</span><span>No uploads. No analytics. No account.</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Name,Financial Status,Fulfillment Status,Canceled at,Lineitem quantity,Lineitem name,Lineitem SKU,Lineitem requires shipping,Lineitem fulfillment status
+#1001,paid,unfulfilled,,2,Canvas tote,TOTE-01,true,pending
+#1001,,,,1,"Notebook, dotted",NOTE-02,true,pending
+#1002,paid,unfulfilled,,3,Canvas tote,TOTE-01,true,pending
+#1003,paid,unfulfilled,,1,Ceramic cup,CUP-03,true,pending
+#1004,paid,fulfilled,,1,Canvas tote,TOTE-01,true,fulfilled
